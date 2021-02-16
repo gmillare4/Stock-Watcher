@@ -1,6 +1,6 @@
 - [x] Find free stock api
 - [x] Create Website
-- [] Display ticker symbol
+- [x] Display ticker symbol
 - [] Display current price
   - - [] Display past price
       [] Candlesticks
