@@ -1,4 +1,4 @@
-- [] Find free stock api
+- [x] Find free stock api
 - [x] Create Website
 - [] Display ticker symbol
 - [] Display current price
