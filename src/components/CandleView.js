@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 
 export const CandleView = (props) => {
   //const [ticker, setTicker] = useState("Ticker Symbol");
+  const [count, setCount] = useState(0);
 
   const marketOpen = new Date();
   marketOpen.setHours(8);
@@ -41,10 +42,15 @@ export const CandleView = (props) => {
   // };
 
   useEffect(() => {
-    getCandles().then((data) => {
-      console.log(data);
-    });
-  }, []);
+    console.log("start");
+    const timer = setTimeout(() => {
+      getCandles().then((data) => {
+        console.log(data);
+        setCount(end);
+      });
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [count]);
 
   return (
     <div>
