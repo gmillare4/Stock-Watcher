@@ -1,6 +1,6 @@
 ![Stock Watcher](public/StockWatcher.PNG)
 
-Stock Watcher is a website that allows you to see realtime trading prices and candlestick data on any stock.
+Stock Watcher is a website that allows you to see real-time trading prices and candlestick data on any stock.
 
 Stock Watcher is made using:
 
