@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <h1>{tickerUC}</h1>
       <TradingPrice ticker={tickerUC} />
-      <h1>
+      <h1 className={status}>
         {status} ${diff} ({percDiff}%) Today
       </h1>
       <CandleView ticker={tickerUC} statusHandler={statusHandler} />
