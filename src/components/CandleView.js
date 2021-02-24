@@ -89,6 +89,7 @@ export const CandleView = (props) => {
         }
         setSeries(testState);
         console.log("teststate", testState);
+        props.statusHandler(data.o[0], data.o[data.o.length - 1]);
         setCount(end);
       });
     }, 5000);
