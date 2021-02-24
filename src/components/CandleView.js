@@ -107,7 +107,7 @@ export const CandleView = (props) => {
           height={350}
         />
       </div>
-      <Resolution />
+      <Resolution status={props.status} />
     </div>
   );
 };

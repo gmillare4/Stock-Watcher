@@ -23,10 +23,8 @@ export const TradingPrice = (props) => {
       let exactPrice;
       if (JSON.parse(event.data).data !== undefined) {
         exactPrice = JSON.parse(event.data).data[0].p;
-      } else {
-        exactPrice = price;
+        setPrice(exactPrice.toFixed(2));
       }
-      setPrice(exactPrice.toFixed(2));
     }
   });
 

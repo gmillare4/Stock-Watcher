@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { CandleView } from "./components/CandleView";
 import { TradingPrice } from "./components/TradingPrice";
+import { TickerSearch } from "./components/TickerSearch";
 
 const ticker = "gme";
 const tickerUC = ticker.toUpperCase();
@@ -30,7 +31,12 @@ function App() {
       <h1 className={status}>
         {status === "up" ? "📈" : "📉"} ${diff} ({percDiff}%) Today
       </h1>
-      <CandleView ticker={tickerUC} statusHandler={statusHandler} />
+      <CandleView
+        ticker={tickerUC}
+        statusHandler={statusHandler}
+        status={status}
+      />
+      <TickerSearch />
     </div>
   );
 }
