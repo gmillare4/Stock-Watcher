@@ -6,6 +6,16 @@
   color: green;
 }
 
+.up::after {
+  color: green;
+  content: "🚀";
+}
+
 .down {
   color: red;
+}
+
+.down {
+  color: red;
+  content: "💩";
 }
