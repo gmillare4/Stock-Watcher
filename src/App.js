@@ -17,6 +17,9 @@ function App() {
     } else {
       setStatus("neutral");
     }
+    let diff = (close - open).toFixed(2);
+    let percDiff = (((close - open) / close) * 100).toFixed(2);
+    console.log(diff, percDiff);
   }
   return (
     <div className="App">
