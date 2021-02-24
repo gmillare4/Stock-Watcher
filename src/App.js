@@ -29,7 +29,7 @@ function App() {
       <h1>{tickerUC}</h1>
       <TradingPrice ticker={tickerUC} />
       <h1 className={status}>
-        {status === "up" ? "📈" : "📉"} ${diff} ({percDiff}%) Today
+        {status === "up" ? "📈 +" : "📉 -"} ${diff} ({percDiff}%) Today
       </h1>
       <CandleView
         ticker={tickerUC}

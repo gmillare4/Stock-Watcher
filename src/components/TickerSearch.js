@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Form, Input } from "reactstrap";
 
 export const TickerSearch = () => {
   return (
