@@ -3,10 +3,8 @@ import "../App.css";
 
 export const TradingPrice = (props) => {
   const [price, setPrice] = useState(0);
-
-  const socket = new WebSocket(
-    "wss://ws.finnhub.io?token=c0m5rvn48v6rkav1k8u0"
-  );
+  const API_KEY = process.env.REACT_APP_FINNHUB_API_KEY;
+  const socket = new WebSocket(`wss://ws.finnhub.io?token=${API_KEY}`);
 
   // Connection opened -> Subscribe
   socket.addEventListener("open", function (event) {
@@ -17,8 +15,6 @@ export const TradingPrice = (props) => {
 
   // Listen for messages
   socket.addEventListener("message", function (event) {
-    // console.log("Message from server ", event.data);
-    // console.log("testing data ", JSON.parse(event.data));
     if (event.data.type !== "ping") {
       let exactPrice;
       if (JSON.parse(event.data).data !== undefined) {

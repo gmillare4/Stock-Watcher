@@ -51,8 +51,8 @@ export const CandleView = (props) => {
   const start = Math.trunc(marketOpen / 1000);
 
   let end = Math.trunc(new Date() / 1000);
-
-  const finUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${props.ticker}&resolution=1&from=${start}&to=${end}&token=c0m5rvn48v6rkav1k8u0`;
+  const API_KEY = process.env.REACT_APP_FINNHUB_API_KEY;
+  const finUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${props.ticker}&resolution=1&from=${start}&to=${end}&token=${API_KEY}`;
   async function getCandles() {
     const response = await fetch(finUrl);
     return response.json();
