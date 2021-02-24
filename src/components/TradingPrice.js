@@ -21,7 +21,7 @@ export const TradingPrice = (props) => {
     // console.log("testing data ", JSON.parse(event.data));
     if (event.data.type !== "ping") {
       let exactPrice;
-      if (JSON.parse(event.data).data[0].p) {
+      if (JSON.parse(event.data).data !== undefined) {
         exactPrice = JSON.parse(event.data).data[0].p;
       } else {
         exactPrice = price;

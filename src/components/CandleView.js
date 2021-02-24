@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { Resolution } from "./Resolution";
 
 export const CandleView = (props) => {
   const [count, setCount] = useState(0);
@@ -106,6 +107,7 @@ export const CandleView = (props) => {
           height={350}
         />
       </div>
+      <Resolution />
     </div>
   );
 };
