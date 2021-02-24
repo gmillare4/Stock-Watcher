@@ -1,12 +1,9 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { CandleView } from "./components/CandleView";
-import { TradingPrice } from "./components/TradingPrice";
+import { useState } from "react";
 
-const ticker = "gme";
-const tickerUC = ticker.toUpperCase();
+export const TradingPrice = () => {
+  let currPrice;
+  const [price, setPrice] = useState(0);
 
-function App() {
   const socket = new WebSocket(
     "wss://ws.finnhub.io?token=c0m5rvn48v6rkav1k8u0"
   );
@@ -19,6 +16,9 @@ function App() {
   // Listen for messages
   socket.addEventListener("message", function (event) {
     console.log("Message from server ", event.data);
+    console.log("testing data ", JSON.parse(event.data));
+    setPrice(JSON.parse(event.data).data[0].p);
+    console.log("price, ", price);
   });
 
   // Unsubscribe
@@ -26,11 +26,8 @@ function App() {
     socket.send(JSON.stringify({ type: "unsubscribe", symbol: symbol }));
   };
   return (
-    <div className="App">
-      <CandleView ticker={tickerUC} />
-      <TradingPrice />
+    <div>
+      <h1>${price}</h1>
     </div>
   );
-}
-
-export default App;
+};
