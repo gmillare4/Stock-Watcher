@@ -8,6 +8,8 @@ const tickerUC = ticker.toUpperCase();
 
 function App() {
   const [status, setStatus] = useState("neutral");
+  const [diff, setDiff] = useState(0);
+  const [percDiff, setPercDiff] = useState(0);
   function statusHandler(open, close) {
     console.log("open and close", open, close);
     if (open > close) {
@@ -17,15 +19,17 @@ function App() {
     } else {
       setStatus("neutral");
     }
-    let diff = (close - open).toFixed(2);
-    let percDiff = (((close - open) / close) * 100).toFixed(2);
+    setDiff((close - open).toFixed(2));
+    setPercDiff((((close - open) / close) * 100).toFixed(2));
     console.log(diff, percDiff);
   }
   return (
     <div className="App">
       <h1>{tickerUC}</h1>
       <TradingPrice ticker={tickerUC} />
-      <h1>{status}</h1>
+      <h1>
+        {status} ${diff} ({percDiff}%) Today
+      </h1>
       <CandleView ticker={tickerUC} statusHandler={statusHandler} />
     </div>
   );
