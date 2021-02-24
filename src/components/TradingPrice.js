@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "../App.css";
 
 export const TradingPrice = () => {
   const [price, setPrice] = useState(0);
+  const [prevPrice, setPrevPrice] = useState(1);
 
   const socket = new WebSocket(
     "wss://ws.finnhub.io?token=c0m5rvn48v6rkav1k8u0"
@@ -15,12 +17,11 @@ export const TradingPrice = () => {
   // Listen for messages
   socket.addEventListener("message", function (event) {
     console.log("Message from server ", event.data);
-    console.log("hahaha poopy stiny");
+    console.log("hahaha poopy stinky");
     console.log("testing data ", JSON.parse(event.data));
-    if (JSON.parse(event.data).data[0].p) {
+    if (event.data.type !== "ping") {
       const exactPrice = JSON.parse(event.data).data[0].p;
       setPrice(exactPrice.toFixed(2));
-      console.log("price, ", price);
     }
   });
 
@@ -28,9 +29,14 @@ export const TradingPrice = () => {
   const unsubscribe = function (symbol) {
     socket.send(JSON.stringify({ type: "unsubscribe", symbol: symbol }));
   };
+
+  useEffect(() => {
+    setPrevPrice(price);
+  }, [price]);
+
   return (
     <div>
-      <h1>${price}</h1>
+      <h1 className={prevPrice > price ? "down" : "up"}>${price}</h1>
     </div>
   );
 };

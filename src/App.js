@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { CandleView } from "./components/CandleView";
 import { TradingPrice } from "./components/TradingPrice";
