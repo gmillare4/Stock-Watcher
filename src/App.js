@@ -27,8 +27,9 @@ function App() {
   };
   return (
     <div className="App">
-      <CandleView ticker={tickerUC} />
+      <h1>{tickerUC}</h1>
       <TradingPrice />
+      <CandleView ticker={tickerUC} />
     </div>
   );
 }
