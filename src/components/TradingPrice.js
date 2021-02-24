@@ -16,8 +16,10 @@ export const TradingPrice = () => {
   // Listen for messages
   socket.addEventListener("message", function (event) {
     console.log("Message from server ", event.data);
+    console.log("hahaha poopy stinky");
     console.log("testing data ", JSON.parse(event.data));
-    setPrice(JSON.parse(event.data).data[0].p);
+    const exactPrice = JSON.parse(event.data).data[0].p;
+    setPrice(exactPrice.toFixed(2));
     console.log("price, ", price);
   });
 
