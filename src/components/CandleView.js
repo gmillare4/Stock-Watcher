@@ -5,7 +5,32 @@ import ReactApexChart from "react-apexcharts";
 export const CandleView = (props) => {
   //const [ticker, setTicker] = useState("Ticker Symbol");
   const [count, setCount] = useState(0);
-
+  // [[Timestamp], [O, H, L, C]]
+  const testState = {
+    series: [
+      {
+        data: [],
+      },
+    ],
+    options: {
+      chart: {
+        type: "candlestick",
+        height: 350,
+      },
+      title: {
+        text: "CandleStick Chart",
+        align: "left",
+      },
+      xaxis: {
+        type: "datetime",
+      },
+      yaxis: {
+        tooltip: {
+          enabled: true,
+        },
+      },
+    },
+  };
   const state = {
     series: [
       {
@@ -296,12 +321,24 @@ export const CandleView = (props) => {
   //     console.log(data);
   //   });
   // }, []);
-
+  console.log(state.series[0].data[0].x);
+  // [[Timestamp], [O, H, L, C]]
   useEffect(() => {
     console.log("start");
     const timer = setTimeout(() => {
       getCandles().then((data) => {
         console.log(data);
+        for (let i = 0; i < data.o.length; i++) {
+          testState.series[0].data.push({});
+          testState.series[0].data[i].x = new Date(data.t[i]);
+          testState.series[0].data[i].y = [
+            data.o[i],
+            data.h[i],
+            data.l[i],
+            data.c[i],
+          ];
+        }
+        console.log("teststate", testState);
         setCount(end);
       });
     }, 5000);
@@ -313,8 +350,8 @@ export const CandleView = (props) => {
       <h1>{props.ticker}</h1>
       <div id="chart">
         <ReactApexChart
-          options={state.options}
-          series={state.series}
+          options={testState.options}
+          series={testState.series}
           type="candlestick"
           height={350}
         />
