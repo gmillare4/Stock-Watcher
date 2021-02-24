@@ -6,6 +6,7 @@ const ticker = "gme";
 const tickerUC = ticker.toUpperCase();
 
 function App() {
+  function statusHandler() {}
   return (
     <div className="App">
       <h1>{tickerUC}</h1>
