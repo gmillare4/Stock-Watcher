@@ -4,14 +4,6 @@ import { Button, ButtonGroup } from "reactstrap";
 export const Resolution = (props) => {
   const [color, setColor] = useState("");
 
-  //   if (props.status === "up") {
-  //     setColor("green");
-  //   } else if (props.status === "down") {
-  //     setColor("red");
-  //   } else {
-  //     setColor("");
-  //   }
-
   return (
     <ButtonGroup>
       <Button color="success">1</Button>
